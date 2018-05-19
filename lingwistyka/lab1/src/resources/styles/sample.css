@@ -1,0 +1,11 @@
+.oneZloty {
+    -fx-graphic: url('../images/zloty1.jpg');
+}
+
+.twoZlotych {
+    -fx-graphic: url('../images/zloty2.jpg');
+}
+
+.fiveZlotych {
+    -fx-graphic: url('../images/zloty5.jpg');
+}
