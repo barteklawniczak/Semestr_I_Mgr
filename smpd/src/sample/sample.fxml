@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import java.net.URL?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="344.0" prefWidth="621.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <Button fx:id="loadFile" layoutX="48.0" layoutY="205.0" mnemonicParsing="false" onAction="#loadFile" prefHeight="25.0" prefWidth="150.0" text="Load File" />
+        <ComboBox fx:id="nList" layoutX="48.0" layoutY="39.0" prefWidth="150.0" />
+        <TextArea fx:id="textArea" layoutX="402.0" layoutY="35.0" prefHeight="200.0" prefWidth="200.0" />
+        <Button fx:id="fisher" visible="false" layoutX="48.0" layoutY="98.0" mnemonicParsing="false" onAction="#computeFisher" prefHeight="25.0" prefWidth="150.0" text="Compute Fisher" />
+      <ComboBox fx:id="acer" layoutX="236.0" layoutY="39.0" prefWidth="150.0" />
+      <ComboBox fx:id="quercus" layoutX="236.0" layoutY="98.0" prefWidth="150.0" />
+      <Label layoutX="236.0" layoutY="14.0" prefHeight="15.0" prefWidth="79.0" text="Acer:" />
+      <Label layoutX="236.0" layoutY="76.0" text="Quercus:" />
+    </children>
+    <!--
+        <stylesheets>
+            <URL value="@../resources/styles/sample.css" />
+        </stylesheets>-->
+</Pane>
