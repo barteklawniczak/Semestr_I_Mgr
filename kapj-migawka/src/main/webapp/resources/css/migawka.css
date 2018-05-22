@@ -1,0 +1,33 @@
+body {
+    background-image: url("../img/default.jpg");
+    background-size: cover;
+    height: 100%;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+.form-signin {
+    max-width: 380px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.app-wrapper{
+    background-color: rgba(89, 94, 103,.95);
+    height: 100%;
+    width: 100%;
+    min-height: 100%;
+}
+
+.bg-white{
+    background: white;
+}
+
+.color-red {
+    color:red;
+}
