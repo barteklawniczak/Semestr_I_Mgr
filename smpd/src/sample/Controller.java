@@ -64,58 +64,76 @@ public class Controller implements Initializable {
                 nItems.add(i + 1);
             }
 
-            int counter=0;
-
+            int acerCounter=0, quercusCounter=0;
             while (scanner.hasNext()) {
                 loadedValues = scanner.next().split(",");
-                if(counter==16)
-                    counter=0;
-                if(counter==0) {
-                    ObjectClass objectClass = new ObjectClass(loadedValues[0]);
-                    this.container.getObjectClasses().add(objectClass);
-                    if(loadedValues[0].contains("Acer"))
-                        this.acerNames.add(loadedValues[0]);
-                    else
-                        this.quercusNames.add(loadedValues[0]);
-                }
-                Serie serie = new Serie();
+                Serie serie = new Serie(loadedValues[0]);
                 float[] values = new float[nItems.size()];
                 for (int i = 0; i < nItems.size(); i++) {
                     values[i] = Float.parseFloat(loadedValues[i + 1]);
                 }
                 serie.setValues(values);
-                this.container.getObjectClasses().get(this.container.getObjectClasses().size()-1).getSerieList().add(serie);
-                counter++;
+                this.container.getSerieList().add(serie);
+                if(serie.getName().contains("Acer"))
+                    acerCounter++;
+                else
+                    quercusCounter++;
             }
 
             scanner.close();
             loadFile.setVisible(false);
             fisher.setVisible(true);
-            computeCommonValues();
+            attachToProperClass(acerCounter, quercusCounter);
         }
     }
 
-    public void computeCommonValues() {
+    public void attachToProperClass(int acerCounter, int quercusCounter) {
+
+        this.container.setAcer(new ObjectClass("Acer", nItems.size(), acerCounter));
+        this.container.setQuercus(new ObjectClass("Quercus", nItems.size(), quercusCounter));
+
+        acerCounter=0; quercusCounter=0;
+
+        for(Serie serie : this.container.getSerieList()) {
+
+            if(serie.getName().contains("Acer")) {
+                insertValuesToProperTable(this.container.getAcer(), serie, acerCounter);
+                acerCounter++;
+            } else {
+                insertValuesToProperTable(this.container.getQuercus(), serie, quercusCounter);
+                quercusCounter++;
+            }
+        }
+
+        computeCommonValues(this.container.getAcer());
+        computeCommonValues(this.container.getQuercus());
+    }
+
+    public void insertValuesToProperTable(ObjectClass objectClass, Serie serie, int counter) {
+        for(int i=0; i<serie.getValues().length; i++) {
+            objectClass.getValues()[i][counter] = serie.getValues()[i];
+        }
+    }
+
+    public void computeCommonValues(ObjectClass objectClass) {
 
         float sum = 0;
 
-        for(ObjectClass objectClass : container.getObjectClasses()) {
+        for(int i=0; i<objectClass.getValues().length; i++) {
 
-            for(Serie serie : objectClass.getSerieList()) {
-
-                for (int i = 0; i < serie.getValues().length; i++) {
-                    sum += serie.getValues()[i];
-                }
-
-                serie.setAverage(sum / (serie.getValues().length));
-                sum = 0;
-
-                for (int i = 0; i < serie.getValues().length; i++) {
-                    sum += Math.pow((serie.getValues()[i] - serie.getAverage()), 2);
-                }
-
-                serie.setStandardDeviation(Math.sqrt(sum / serie.getValues().length));
+            for(int j=0; j<objectClass.getValues()[i].length; j++) {
+                sum += objectClass.getValues()[i][j];
             }
+
+            objectClass.getAverages()[i] = (sum/(objectClass.getValues()[i].length));
+            sum=0;
+
+            for(int j=0; j<objectClass.getValues()[i].length; j++) {
+                sum += Math.pow((objectClass.getValues()[i][j] - objectClass.getAverages()[i]),2);
+            }
+
+            objectClass.getStandardDeviations()[i] = Math.sqrt(sum/objectClass.getValues()[i].length);
+            sum=0;
         }
     }
 

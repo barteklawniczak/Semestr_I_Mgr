@@ -6,7 +6,9 @@ import java.util.List;
 public class ObjectClass {
 
     private String name;
-    private List<Serie> serieList;
+    private float[][] values;
+    private float[] averages;
+    private double[] standardDeviations;
 
     public String getName() {
         return name;
@@ -16,16 +18,34 @@ public class ObjectClass {
         this.name = name;
     }
 
-    public List<Serie> getSerieList() {
-        return serieList;
+    public float[][] getValues() {
+        return values;
     }
 
-    public void setSerieList(List<Serie> serieList) {
-        this.serieList = serieList;
+    public void setValues(float[][] values) {
+        this.values = values;
     }
 
-    public ObjectClass(String name) {
+    public float[] getAverages() {
+        return averages;
+    }
+
+    public void setAverages(float[] averages) {
+        this.averages = averages;
+    }
+
+    public double[] getStandardDeviations() {
+        return standardDeviations;
+    }
+
+    public void setStandardDeviations(double[] standardDeviations) {
+        this.standardDeviations = standardDeviations;
+    }
+
+    public ObjectClass(String name, int amountOfProperties, int counter) {
         this.name = name;
-        this.serieList = new ArrayList<>();
+        this.values = new float[amountOfProperties][counter];
+        this.averages = new float[amountOfProperties];
+        this.standardDeviations = new double[amountOfProperties];
     }
 }
