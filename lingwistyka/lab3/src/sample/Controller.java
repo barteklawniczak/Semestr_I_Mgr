@@ -94,7 +94,7 @@ public class Controller implements Initializable {
         this.next.setVisible(true);
         this.approve.setVisible(false);
         this.currentSerieText.setEditable(false);
-        this.currentSerieText.setText("#" + this.currentSerieText.getText());
+        this.currentSerieText.setText("##" + this.currentSerieText.getText());
         char[] serie = this.currentSerieText.getText().toCharArray();
         int counter=1;
         for(int i=4; i>=0; i--) {
@@ -132,8 +132,13 @@ public class Controller implements Initializable {
         if(!currentChar.equals("#"))
             this.table.setCurrentState(nextState.getId());
         else {
-            this.next.setVisible(false);
-            this.auto.setVisible(false);
+            if(nextState.getDecision().equals("L")) {
+                this.table.setCurrentState(nextState.getId());
+            } else {
+                this.next.setVisible(false);
+                this.auto.setVisible(false);
+            }
+
         }
     }
 
