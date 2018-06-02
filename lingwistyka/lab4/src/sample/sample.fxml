@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="649.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <TextField fx:id="currentSerieText" layoutX="36.0" layoutY="93.0" prefHeight="25.0" prefWidth="225.0" style="-fx-alignment: center" />
+        <Label layoutX="36.0" layoutY="65.0" text="Wprowadź wyrażenie w notacji infiksowej:" />
+        <Button fx:id="approve" layoutX="36.0" layoutY="140.0" mnemonicParsing="false" onAction="#approveSerie" prefHeight="25.0" prefWidth="225.0" text="Zatwierdź" />
+        <Button fx:id="auto" layoutX="36.0" layoutY="187.0" mnemonicParsing="false" onAction="#autoResolve" prefHeight="25.0" prefWidth="104.0" text="Auto" />
+        <Button fx:id="next" layoutX="160.0" layoutY="187.0" mnemonicParsing="false" onAction="#nextStep" prefHeight="25.0" prefWidth="104.0" text="Następny" />
+        <TableView fx:id="tableView" layoutX="334.0" layoutY="14.0" prefHeight="396.0" prefWidth="305.0">
+            <columns>
+                <TableColumn prefWidth="103.0" style="-fx-alignment: center" text="Wejście" />
+                <TableColumn prefWidth="103.0" style="-fx-alignment: center" text="Stos" />
+                <TableColumn prefWidth="103.0" style="-fx-alignment: center" text="Wyjście" />
+            </columns>
+        </TableView>
+        <Label layoutX="140.0" layoutY="271.0" prefHeight="15.0" prefWidth="92.0" text="Taśma:" />
+        <Label layoutX="36.0" layoutY="349.0" text="Wyrażenie w odwrotnej notacji polskiej:" />
+        <TextField fx:id="field5" layoutX="190.0" layoutY="301.0" prefHeight="25.0" prefWidth="45.0" style="-fx-alignment: center" />
+        <TextField fx:id="field6" layoutX="235.0" layoutY="301.0" prefHeight="25.0" prefWidth="45.0" style="-fx-alignment: center" />
+        <TextField fx:id="field4" layoutX="145.0" layoutY="301.0" prefHeight="25.0" prefWidth="45.0" style="-fx-alignment: center" />
+        <TextField fx:id="field3" layoutX="100.0" layoutY="301.0" prefHeight="25.0" prefWidth="45.0" style="-fx-alignment: center" />
+        <TextField fx:id="field7" layoutX="280.0" layoutY="301.0" prefHeight="25.0" prefWidth="45.0" style="-fx-alignment: center" />
+        <TextField fx:id="field1" layoutX="10.0" layoutY="301.0" prefHeight="25.0" prefWidth="45.0" style="-fx-alignment: center" />
+        <TextField fx:id="field2" layoutX="55.0" layoutY="301.0" prefHeight="25.0" prefWidth="45.0" style="-fx-alignment: center" />
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff71" height="45.0" layoutX="145.0" layoutY="290.0" stroke="BLACK" strokeType="INSIDE" width="45.0" />
+        <TextField fx:id="resultSerie" editable="false" layoutX="36.0" layoutY="376.0" prefHeight="25.0" prefWidth="225.0" style="-fx-alignment: center" />
+    </children>
+</Pane>
