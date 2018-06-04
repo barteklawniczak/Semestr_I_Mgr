@@ -24,6 +24,7 @@ public class Controller implements Initializable {
     private List<String> elementsInSerieList;
     private List<String> heap;
     private String resultSerieText = "";
+    private String previous;
     @FXML
     private TableView<TableViewObject> tableView;
 
@@ -59,6 +60,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        this.previous="";
         this.auto.setVisible(false);
         this.next.setVisible(false);
         tableView.getColumns().get(0).setCellValueFactory(new PropertyValueFactory("inSymbol"));
@@ -86,11 +88,20 @@ public class Controller implements Initializable {
         this.currentSerieText.setEditable(false);
         this.currentSerieText.setText(this.currentSerieText.getText() + "#");
         String currentSerie = this.currentSerieText.getText();
-        String[] elements = currentSerie.split("((?<=[\\\\+])|(?=[\\\\+]))|((?<=[\\-])|(?=[\\-]))|((?<=[*])|(?=[*]))" +
+        String[] elements = currentSerie.split("((?<=[\\\\+])|(?=[\\\\+]))|((?<=[\\-])|(?=[\\-]))|((?<=[\\s+])|(?=[\\s+]))|((?<=[*])|(?=[*]))" +
                 "|((?<=[/])|(?=[/]))|((?<=[\\\\^])|(?=[\\\\^]))|((?<=[#])|(?=[#]))|((?<=[)])|(?=[)]))|((?<=[(])|(?=[(]))");
 
-        for(String element : elements) {
-            this.elementsInSerieList.add(0, element);
+        for(int i=0; i<elements.length; i++) {
+            if(elements[i].equals("-")) {
+                if(i==0 || elements[i-1].matches("[\\\\+\\-*/^]")) {
+                    elements[i+1] = "-" + elements[i+1];
+                } else {
+                    this.elementsInSerieList.add(0, elements[i]);
+                }
+            }
+            if(!elements[i].equals("-")) {
+                this.elementsInSerieList.add(0, elements[i]);
+            }
         }
 
         int counter=1;
@@ -122,6 +133,7 @@ public class Controller implements Initializable {
         String current = this.field4.getText();
         String outSymbols = this.makeDecision(current);
         data.add(new TableViewObject(current, this.heap, outSymbols));
+        this.previous = current;
         if(!current.equals("#"))
             this.moveTape("L");
     }
@@ -147,12 +159,19 @@ public class Controller implements Initializable {
 
     public String makeDecision(String current) {
 
-        if(current.matches("\\d+")) {
+        if(current.matches("-?\\d+")) {
+            if(this.previous.equals(")")) {
+                addToHeap("*");
+            }
             this.resultSerie.setText(this.resultSerie.getText() + current);
             return current;
         }
-        if(current.equals("("))
+        if(current.equals("(")) {
+            if(this.previous.matches("-?\\d+")) {
+                addToHeap("*");
+            }
             addToHeap(current);
+        }
         if(current.equals(")"))
             return this.returnHeapValuesToBracket();
         if(current.matches("[\\\\+\\-*/^]"))
