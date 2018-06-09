@@ -1,0 +1,23 @@
+.oneZloty {
+    -fx-graphic: url('../images/zloty1.jpg');
+}
+
+.twoZlotych {
+    -fx-graphic: url('../images/zloty2.jpg');
+}
+
+.fiveZlotych {
+    -fx-graphic: url('../images/zloty5.jpg');
+}
+
+.tenGroszy {
+    -fx-graphic: url('../images/groszy10.jpg');
+}
+
+.twentyGroszy {
+    -fx-graphic: url('../images/groszy20.jpg');
+}
+
+.fiftyGroszy {
+    -fx-graphic: url('../images/groszy50.jpg');
+}

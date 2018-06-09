@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import java.net.URL?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="541.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.coffeemachine.CoffeeController">
+   <children>
+      <Button fx:id="coffee" layoutX="46.0" layoutY="48.0" mnemonicParsing="false" onAction="#coffee" prefHeight="55.0" prefWidth="135.0" text="Kawa" textAlignment="CENTER" />
+      <Button fx:id="coffeeWithMilk" layoutX="210.0" layoutY="48.0" mnemonicParsing="false" onAction="#coffeeWithMilk" prefHeight="55.0" prefWidth="135.0" text="Kawa z mlekiem" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="cappuccino" layoutX="46.0" layoutY="126.0" mnemonicParsing="false" onAction="#cappuccino" prefHeight="55.0" prefWidth="135.0" text="Cappuccino" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="caffeLatte" layoutX="377.0" layoutY="126.0" mnemonicParsing="false" onAction="#caffeLatte" prefHeight="55.0" prefWidth="135.0" text="Caffe Latte" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="americano" layoutX="210.0" layoutY="126.0" mnemonicParsing="false" onAction="#americano" prefHeight="55.0" prefWidth="135.0" text="Americano" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="espresso" layoutX="377.0" layoutY="48.0" mnemonicParsing="false" onAction="#espresso" prefHeight="55.0" prefWidth="135.0" text="Espresso" textAlignment="CENTER" wrapText="true" />
+      <Label layoutX="47.0" layoutY="16.0" prefHeight="15.0" prefWidth="280.0" text="Wybierz kawę:" />
+      <TextField fx:id="alert" editable="false" layoutX="46.0" layoutY="198.0" prefHeight="25.0" prefWidth="468.0" style="-fx-alignment: center" />
+      <Label layoutX="47.0" layoutY="241.0" text="Aktualna Kwota:" />
+      <TextField fx:id="currentAmount" editable="false" layoutX="47.0" layoutY="267.0" prefHeight="25.0" prefWidth="106.0" style="-fx-alignment: center" />
+      <Label layoutX="46.0" layoutY="312.0" text="Do zapłaty:" />
+      <TextField fx:id="neededAmount" editable="false" layoutX="47.0" layoutY="337.0" prefHeight="25.0" prefWidth="106.0" style="-fx-alignment: center" />
+      <Button fx:id="oneZloty" layoutX="207.0" layoutY="237.0" mnemonicParsing="false" onAction="#oneZloty" styleClass="oneZloty" />
+      <Button fx:id="twoZlotych" layoutX="307.0" layoutY="237.0" mnemonicParsing="false" onAction="#twoZlotych" styleClass="twoZlotych" />
+      <Button fx:id="fiveZlotych" layoutX="407.0" layoutY="237.0" mnemonicParsing="false" onAction="#fiveZlotych" styleClass="fiveZlotych" />
+      <Button fx:id="tenGroszy" layoutX="207.0" layoutY="327.0" mnemonicParsing="false" onAction="#tenGroszy" styleClass="tenGroszy" />
+      <Button fx:id="twentyGroszy" layoutX="307.0" layoutY="327.0" mnemonicParsing="false" onAction="#twentyGroszy" styleClass="twentyGroszy" />
+      <Button fx:id="fiftyGroszy" layoutX="407.0" layoutY="327.0" mnemonicParsing="false" onAction="#fiftyGroszy" styleClass="fiftyGroszy" />
+      <Button fx:id="cancel" layoutX="46.0" visible="false" layoutY="381.0" mnemonicParsing="false" onAction="#cancel" prefHeight="25.0" prefWidth="106.0" text="Anuluj" />
+      <Button fx:id="takeCoffee" layoutX="46.0" visible="false" layoutY="381.0" mnemonicParsing="false" onAction="#takeCoffee" prefHeight="25.0" prefWidth="106.0" text="Odbierz" />
+      <Button fx:id="restart" layoutX="46.0" visible="false" layoutY="381.0" mnemonicParsing="false" onAction="#restart" prefHeight="25.0" prefWidth="106.0" text="Restart" />
+   </children>
+ 
+    <stylesheets>
+        <URL value="@/styles/sample.css" />
+    </stylesheets>
+</Pane>
