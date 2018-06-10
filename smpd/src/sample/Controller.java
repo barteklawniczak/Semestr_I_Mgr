@@ -9,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
 import sample.algorithms.Fisher;
+import sample.algorithms.SFS;
 import sample.models.Container;
 import sample.models.ObjectClass;
 import sample.models.Serie;
@@ -28,9 +29,14 @@ public class Controller implements Initializable {
     @FXML
     private Button computeFisher;
     @FXML
+    private Button computeSFS;
+    @FXML
     private ComboBox nList;
     @FXML
-    private TextArea textArea;
+    private TextArea textAreaSelection;
+    @FXML
+    private TextArea textAreaSFS;
+
 
     private final ObservableList<Integer> nItems = FXCollections.observableArrayList();
 
@@ -38,6 +44,9 @@ public class Controller implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.container = new Container();
         this.nList.setItems(nItems);
+        this.textAreaSelection.setWrapText(true);
+        this.textAreaSFS.setWrapText(true);
+
     }
 
     public void loadFile() throws IOException {
@@ -72,6 +81,7 @@ public class Controller implements Initializable {
             scanner.close();
             loadFile.setVisible(false);
             computeFisher.setVisible(true);
+            computeSFS.setVisible(true);
             attachToProperClass(acerCounter, quercusCounter);
         }
     }
@@ -128,7 +138,12 @@ public class Controller implements Initializable {
 
     public void computeFisher() {
         List<Integer> features = new Fisher().decide(this.container, Integer.parseInt(this.nList.getValue().toString()));
-        this.textArea.setWrapText(true);
-        this.textArea.appendText("Najlepsze cechy dla n=" + this.nList.getValue() + ": " + features + "\n");
+        this.textAreaSelection.appendText("(n=" + this.nList.getValue() + "): " + features + "\n");
     }
+
+    public void computeSFS() {
+        List<Integer> features = new SFS().performSFS(this.container, Integer.parseInt(this.nList.getValue().toString()));
+        this.textAreaSFS.appendText("(n=" + this.nList.getValue() + "): " + features + "\n");
+    }
+
 }

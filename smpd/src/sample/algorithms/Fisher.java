@@ -1,15 +1,12 @@
 package sample.algorithms;
 
+import org.apache.commons.math3.util.Combinations;
 import org.ejml.data.SimpleMatrix;
 import sample.models.Container;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import org.apache.commons.math3.util.Combinations;
-import org.apache.commons.math3.linear.*;
-import sun.java2d.pipe.SpanShapeRenderer;
 
 public class Fisher {
 
@@ -27,16 +24,15 @@ public class Fisher {
         this.container = container;
 
         if(n==1) {
-            fisherForOneFeature(container);
+            fisherForOneFeature();
         } else {
-            fisherForMultipleFeature(container, n);
+            fisherForMultipleFeature(n);
         }
 
         return this.features;
     }
 
-    public void fisherForOneFeature(Container container) {
-
+    public void fisherForOneFeature() {
 
         for(int i=0; i<container.getQuercus().getStandardDeviations().length; i++) {
 
@@ -48,9 +44,10 @@ public class Fisher {
                 this.features.add(i);
             }
         }
+
     }
 
-    public void fisherForMultipleFeature(Container container, int n) {
+    public void fisherForMultipleFeature(int n) {
 
         double[][] quercusValues= new double[container.getQuercus().getValues().length][container.getQuercus().getValues()[0].length];
         double[][] acerValues = new double[container.getAcer().getValues().length][container.getAcer().getValues()[0].length];
