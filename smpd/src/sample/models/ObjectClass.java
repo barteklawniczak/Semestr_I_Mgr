@@ -6,8 +6,8 @@ import java.util.List;
 public class ObjectClass {
 
     private String name;
-    private float[][] values;
-    private float[] averages;
+    private double[][] values;
+    private double[] averages;
     private double[] standardDeviations;
 
     public String getName() {
@@ -18,19 +18,19 @@ public class ObjectClass {
         this.name = name;
     }
 
-    public float[][] getValues() {
+    public double[][] getValues() {
         return values;
     }
 
-    public void setValues(float[][] values) {
+    public void setValues(double[][] values) {
         this.values = values;
     }
 
-    public float[] getAverages() {
+    public double[] getAverages() {
         return averages;
     }
 
-    public void setAverages(float[] averages) {
+    public void setAverages(double[] averages) {
         this.averages = averages;
     }
 
@@ -44,8 +44,8 @@ public class ObjectClass {
 
     public ObjectClass(String name, int amountOfProperties, int counter) {
         this.name = name;
-        this.values = new float[amountOfProperties][counter];
-        this.averages = new float[amountOfProperties];
+        this.values = new double[amountOfProperties][counter];
+        this.averages = new double[amountOfProperties];
         this.standardDeviations = new double[amountOfProperties];
     }
 }

@@ -8,12 +8,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
+import sample.algorithms.Fisher;
 import sample.models.Container;
 import sample.models.ObjectClass;
 import sample.models.Serie;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Scanner;
 
@@ -23,32 +25,19 @@ public class Controller implements Initializable {
 
     @FXML
     private Button loadFile;
-
     @FXML
-    private Button fisher;
-
-    @FXML
-    private ComboBox acer;
-
-    @FXML
-    private ComboBox quercus;
-
+    private Button computeFisher;
     @FXML
     private ComboBox nList;
-
     @FXML
     private TextArea textArea;
 
     private final ObservableList<Integer> nItems = FXCollections.observableArrayList();
-    private final ObservableList<String> acerNames = FXCollections.observableArrayList();
-    private final ObservableList<String> quercusNames = FXCollections.observableArrayList();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.container = new Container();
         this.nList.setItems(nItems);
-        this.acer.setItems(acerNames);
-        this.quercus.setItems(quercusNames);
     }
 
     public void loadFile() throws IOException {
@@ -68,7 +57,7 @@ public class Controller implements Initializable {
             while (scanner.hasNext()) {
                 loadedValues = scanner.next().split(",");
                 Serie serie = new Serie(loadedValues[0]);
-                float[] values = new float[nItems.size()];
+                double[] values = new double[nItems.size()];
                 for (int i = 0; i < nItems.size(); i++) {
                     values[i] = Float.parseFloat(loadedValues[i + 1]);
                 }
@@ -82,7 +71,7 @@ public class Controller implements Initializable {
 
             scanner.close();
             loadFile.setVisible(false);
-            fisher.setVisible(true);
+            computeFisher.setVisible(true);
             attachToProperClass(acerCounter, quercusCounter);
         }
     }
@@ -117,7 +106,7 @@ public class Controller implements Initializable {
 
     public void computeCommonValues(ObjectClass objectClass) {
 
-        float sum = 0;
+        double sum = 0;
 
         for(int i=0; i<objectClass.getValues().length; i++) {
 
@@ -138,6 +127,8 @@ public class Controller implements Initializable {
     }
 
     public void computeFisher() {
-
+        List<Integer> features = new Fisher().decide(this.container, Integer.parseInt(this.nList.getValue().toString()));
+        this.textArea.setWrapText(true);
+        this.textArea.appendText("Najlepsze cechy dla n=" + this.nList.getValue() + ": " + features + "\n");
     }
 }

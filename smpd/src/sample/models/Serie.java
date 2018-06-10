@@ -3,7 +3,7 @@ package sample.models;
 public class Serie {
 
     private String name;
-    private float[] values;
+    private double[] values;
 
     public String getName() {
         return name;
@@ -13,11 +13,11 @@ public class Serie {
         this.name = name;
     }
 
-    public float[] getValues() {
+    public double[] getValues() {
         return values;
     }
 
-    public void setValues(float[] values) {
+    public void setValues(double[] values) {
         this.values = values;
     }
 
