@@ -6,21 +6,34 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="292.0"
-      prefWidth="1060.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="sample.Controller">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="872.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
     <children>
-        <Button fx:id="loadFile" layoutX="48.0" layoutY="160.0" mnemonicParsing="false" onAction="#loadFile"
-                prefHeight="75.0" prefWidth="150.0" text="Load File"/>
-        <ComboBox fx:id="nList" layoutX="49.0" layoutY="91.0" prefWidth="150.0"/>
-        <TextArea fx:id="textAreaSelection" layoutX="247.0" layoutY="35.0" prefHeight="200.0" prefWidth="258.0"/>
-        <Button fx:id="computeFisher" layoutX="301.0" layoutY="242.0" mnemonicParsing="false" onAction="#computeFisher"
-                prefHeight="25.0" prefWidth="150.0" text="Compute Fisher" visible="false"/>
-        <Label layoutX="49.0" layoutY="66.0" text="Amount of attributes:"/>
-        <Button fx:id="computeSFS" layoutX="618.0" layoutY="242.0" mnemonicParsing="false" onAction="#computeSFS"
-                prefHeight="25.0" prefWidth="150.0" text="Compute SFS" visible="false"/>
-        <Label layoutX="247.0" layoutY="14.0" text="Selection results:"/>
-        <TextArea fx:id="textAreaSFS" layoutX="564.0" layoutY="35.0" prefHeight="200.0" prefWidth="258.0"/>
-        <Label layoutX="564.0" layoutY="14.0" text="SFS results:"/>
+        <Button fx:id="loadFile" layoutX="48.0" layoutY="160.0" mnemonicParsing="false" onAction="#loadFile" prefHeight="75.0" prefWidth="150.0" text="Load File" />
+        <ComboBox fx:id="nList" layoutX="49.0" layoutY="91.0" prefWidth="150.0" />
+        <TextArea fx:id="textAreaSelection" layoutX="247.0" layoutY="35.0" prefHeight="200.0" prefWidth="280.0" />
+        <Button fx:id="computeFisher" layoutX="301.0" layoutY="242.0" mnemonicParsing="false" onAction="#computeFisher" prefHeight="25.0" prefWidth="150.0" text="Compute Fisher" visible="false" />
+        <Label layoutX="49.0" layoutY="66.0" text="Amount of attributes:" />
+        <Button fx:id="computeSFS" layoutX="618.0" layoutY="242.0" mnemonicParsing="false" onAction="#computeSFS" prefHeight="25.0" prefWidth="150.0" text="Compute SFS" visible="false" />
+        <Label layoutX="247.0" layoutY="14.0" text="Selection results:" />
+        <TextArea fx:id="textAreaSFS" layoutX="564.0" layoutY="35.0" prefHeight="200.0" prefWidth="280.0" />
+        <Label layoutX="564.0" layoutY="14.0" text="SFS results:" />
+      <TextArea fx:id="textAreakMeans" layoutX="562.0" layoutY="315.0" prefHeight="200.0" prefWidth="280.0" />
+      <TextArea fx:id="textAreakNN" layoutX="245.0" layoutY="315.0" prefHeight="200.0" prefWidth="280.0" />
+      <Label layoutX="245.0" layoutY="284.0" text="k-NN:" />
+      <Label layoutX="562.0" layoutY="284.0" text="k-Means:" />
+      <ComboBox fx:id="kList" layoutX="49.0" layoutY="310.0" prefWidth="150.0" />
+      <Label layoutX="48.0" layoutY="288.0" text="k:" />
+      <TextField fx:id="trainingPart" layoutX="49.0" layoutY="367.0" prefHeight="25.0" prefWidth="150.0" />
+      <Label layoutX="49.0" layoutY="343.0" text="Training part:" />
+      <Button fx:id="train" layoutX="49.0" layoutY="415.0" mnemonicParsing="false" onAction="#train" prefHeight="25.0" prefWidth="150.0" text="Train" visible="false" />
+        <Button fx:id="execute" layoutX="49.0" layoutY="458.0" mnemonicParsing="false" onAction="#execute" prefHeight="25.0" prefWidth="150.0" text="Execute" visible="false" />
+      <TextArea fx:id="textAreaNN" layoutX="245.0" layoutY="541.0" prefHeight="200.0" prefWidth="280.0" />
+      <TextArea fx:id="textAreaNM" layoutX="562.0" layoutY="541.0" prefHeight="200.0" prefWidth="280.0" />
+      <Label layoutX="245.0" layoutY="526.0" text="NN:" />
+      <Label layoutX="563.0" layoutY="526.0" text="NM:" />
+        <Label layoutX="26.0" layoutY="495.0" text="Number of intervals/iterations:" />
+        <TextField fx:id="intervals" layoutX="49.0" layoutY="521.0" prefHeight="25.0" prefWidth="150.0" />
+        <Button fx:id="crossValidation" layoutX="49.0" layoutY="564.0" mnemonicParsing="false" onAction="#crossValidation" prefHeight="25.0" prefWidth="150.0" text="Cross Validation" visible="false" />
+      <Button fx:id="iteration" layoutX="49.0" layoutY="607.0" mnemonicParsing="false" onAction="#iteration" prefHeight="25.0" prefWidth="150.0" text="Iteration" visible="false" />
     </children>
 </Pane>
