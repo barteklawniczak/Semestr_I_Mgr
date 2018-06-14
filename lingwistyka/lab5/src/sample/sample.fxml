@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="221.0" prefWidth="413.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <children>
+        <TextField fx:id="currentExpression" layoutX="36.0" layoutY="93.0" prefHeight="25.0" prefWidth="225.0" style="-fx-alignment: center" />
+        <Label layoutX="67.0" layoutY="65.0" text="Wprowadź wyrażenie:" />
+        <Button layoutX="36.0" layoutY="140.0" mnemonicParsing="false" onAction="#checkExpression" prefHeight="25.0" prefWidth="225.0" text="Zatwierdź" />
+        <Label layoutX="290.0" layoutY="64.0" text="Poprawność:" />
+        <TextField fx:id="result" editable="false" layoutX="281.0" layoutY="93.0" prefHeight="25.0" prefWidth="103.0" style="-fx-alignment: center" />
+    </children>
+</Pane>
