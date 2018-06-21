@@ -66,6 +66,9 @@ public class Controller {
 
         if(this.expression.charAt(this.position) == ';') {
             increasePosition();
+            if(this.expression.charAt(this.position)!= ' ') {
+                throw new Exception("Expected space but got " + this.expression.charAt(this.position) + " (position " + this.position + ")");
+            }
         } else {
             throw new Exception("Expected semicolon but got " + this.expression.charAt(this.position) + " (position " + this.position + ")");
         }
@@ -82,6 +85,8 @@ public class Controller {
                 } catch (Exception e) {
                     throw e;
                 }
+            } else {
+                throw new Exception("Expected digit or opening bracket but got " + this.expression.charAt(this.position+1) + " (position " + (this.position+1) + ")");
             }
         }
     }
