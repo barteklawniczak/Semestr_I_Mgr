@@ -205,11 +205,11 @@ public class Controller implements Initializable {
         String kNNPercent = String.format("%.2f", this.nearestNeighbourAndMean.nearestNeighbour(Integer.parseInt(k))*100);
         String oneNNPercent = String.format("%.2f", this.nearestNeighbourAndMean.nearestNeighbour(1)*100);
         String oneNMPercent = String.format("%.2f", this.nearestNeighbourAndMean.nearestMean()*100);
-        String kMeans = String.format("%.2f", this.nearestNeighbourAndMean.kMeans()*100);
+        String kMeans = String.format("%.2f", this.nearestNeighbourAndMean.kMeans(Integer.parseInt(k))*100);
         this.textAreakNN.appendText("(k=" + k + ", train: " + this.trainingPart.getText() + "%): efficiency: " + kNNPercent + "%\n");
         this.textAreaNN.appendText("(k=1, train: " + this.trainingPart.getText() + "%): efficiency: " + oneNNPercent + "%\n");
         this.textAreaNM.appendText("(train: " + this.trainingPart.getText() + "%): efficiency: " + oneNMPercent + "%\n");
-        this.textAreakMeans.appendText("(train: " + this.trainingPart.getText() + "%): efficiency: " + kMeans + "%\n");
+        this.textAreakMeans.appendText("(k=" + k + "): efficiency: " + kMeans + "%\n");
 
     }
 
@@ -226,7 +226,7 @@ public class Controller implements Initializable {
             this.textAreakNN.appendText("(k=" + k + ", i=" + i + "): quality: " + kNNPercent + "%\n");
             this.textAreaNN.appendText("(k=1, i=" + i + "), quality: " + oneNNPercent + "%\n");
             this.textAreaNM.appendText("(i=" + i + "): quality: " + oneNMPercent + "%\n");
-            this.textAreakMeans.appendText("(i=" + i + "): quality: " + kMeans + "%\n");
+            this.textAreakMeans.appendText("(k=" + k + ", i=" + i + "): quality: " + kMeans + "%\n");
 
         }
     }
@@ -234,9 +234,10 @@ public class Controller implements Initializable {
     public void iteration() {
         int k = Integer.parseInt(this.kList.getValue().toString());
         int i = Integer.parseInt(this.intervals.getText());
-        if(i>1) {
-            Bootstrap bootstrap = new Bootstrap(this.container.getSerieList(), i);
-            List<Double> results = bootstrap.executeBootstrap(k, i);
+        int trainingPartPercent = Integer.parseInt(trainingPart.getText());
+        if(i>1 && (trainingPartPercent >0 && trainingPartPercent<100)) {
+            Bootstrap bootstrap = new Bootstrap();
+            List<Double> results = bootstrap.executeBootstrap(this.container.getSerieList(), k, i, trainingPartPercent);
             String kNNPercent = String.format("%.2f", results.get(0)*100);
             String oneNNPercent = String.format("%.2f", results.get(1)*100);
             String oneNMPercent = String.format("%.2f", results.get(2)*100);
@@ -244,7 +245,7 @@ public class Controller implements Initializable {
             this.textAreakNN.appendText("(k=" + k + ", i=" + i + "): quality: " + kNNPercent + "%\n");
             this.textAreaNN.appendText("(k=1, i=" + i + "), quality: " + oneNNPercent + "%\n");
             this.textAreaNM.appendText("(i=" + i + "): quality: " + oneNMPercent + "%\n");
-            this.textAreakMeans.appendText("(i=" + i + "): quality: " + kMeans + "%\n");
+            this.textAreakMeans.appendText("(k=" + k + ", i=" + i + "): quality: " + kMeans + "%\n");
 
         }
     }

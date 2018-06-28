@@ -44,7 +44,7 @@ public class CrossValidation {
             results.set(0, results.get(0)+nearestNeighbourAndMean.nearestNeighbour(kRepeats));
             results.set(1, results.get(1)+nearestNeighbourAndMean.nearestNeighbour(1));
             results.set(2, results.get(2)+nearestNeighbourAndMean.nearestMean());
-            results.set(3, results.get(3)+nearestNeighbourAndMean.kMeans());
+            results.set(3, results.get(3)+nearestNeighbourAndMean.kMeans(kRepeats));
         }
 
         for(int i=0; i<results.size(); i++) {
